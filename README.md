@@ -8,9 +8,9 @@ Comité les modifications dans le repo local : git commit -m "message"
 
 Push les modification dans le repo distant : git push 
 
-__________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________________
 
-Mise en place de la V2 de la solution :
+Mise en place de la V2 de la solution du 2020-03-13 :
 
 1) Ajout du dossier BDD :
 Script SQL de la BDD actuelle
