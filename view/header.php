@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> MD2 | <?php $title ?> </title>
+    <title> MD2 | <?php echo $titre_onglet; ?> </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- icon -->
@@ -36,15 +36,21 @@
     <!-- jvectormap CSS-->
     <link rel="stylesheet" href="../css/jvectormap/jquery-jvectormap-2.0.3.css">
     <!-- Notika icon CSS -->
-    <link rel="stylesheet" href="../css/notika-custom-icon.css">
+    <!--<link rel="stylesheet" href="../css/notika-custom-icon.css">-->
     <!-- main CSS -->
     <link rel="stylesheet" href="../css/main.css">
     <!-- style CSS -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- responsive CSS -->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- modernizr JS -->
     <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+	<!-- AJAX -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- DataTable JS-->
+	<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
+	<!-- Datepicker JS -->
+	<link rel="stylesheet" href="../css/datapicker/datepicker3.css">
 </head>
 
 <body>
@@ -139,12 +145,12 @@
 								</a>
 							</li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle">
-									<span><i class="notika-icon notika-search"></i>     Rechercher</span>
+                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+									<span><i class="fas fa-search"></i>     Rechercher</span>
 								</a>
                                 <div role="menu" class="dropdown-menu search-dd animated flipInX">
                                     <div class="search-input">
-                                        <i class="notika-icon notika-left-arrow"></i>
+                                        <i class="fas fa-arrow-left"></i>
                                         <input type="text" />
                                     </div>
                                 </div>
@@ -233,3 +239,14 @@
 	}
 	?>
     <!-- Mobile Menu end -->
+	
+	<!-- Début du contenu de la page -->
+	<div class="container" style="background-color:#FFFFFF;margin-top:40px">
+		<div>
+			<?php 
+				echo "</br>";
+				echo $ariane; 
+				echo "</br>";
+				echo "<h1>",$titre_page,"</h1>";
+			?>
+		</div>

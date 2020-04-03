@@ -25,3 +25,15 @@ Epurer / finaliser les fichiers views
 Màj BDD
 Controllers
 Scripts PHP et JS (Autocomplete)
+
+________________________________________________________________________________________________________________________________________
+
+Mise en place de la V2.1 de la solution du 2020-04-03 :
+
+1) Nouveaux fichiers View "finaux"
+
+=> Prévoir un nouveau push pour :
+Màj BDD
+Controllers
+Scripts PHP et JS (Autocomplete / AJAX)
+Mise en place des liens finaux

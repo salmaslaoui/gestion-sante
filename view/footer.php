@@ -1,3 +1,5 @@
+	<!-- Fin du container -->
+	</div>
     <!-- Start Footer area -->
     <div class="footer-copyright-area" style="height:unset">
         <div class="container">
@@ -8,8 +10,9 @@
 				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
 						<p>
-						<a href="#">CGU</a> | <a href="#">Politique de Confidentialité</a> | <a href="#">Mentions Légales</a> | <a href="#">Contact</a> | <a href="#">Qui sommes nous ?</a> | <a href="#">Plan du site</a>
-						<br/>
+							<a href="droit.php#cgu">CGU</a> | <a href="droit.php#poc">Politique de Confidentialité</a> | <a href="droit.php#ml">Mentions Légales</a> | <a href="accueil.php#contact">Contact</a> | <a href="accueil.php#qui">Qui sommes nous ?</a> | <a href="#">Plan du site</a>
+							</br>
+							</br>
 							<a href="https://colorlib.com">Template Notika par colorlib</a>
 						</p>
                     </div>
@@ -56,21 +59,32 @@
     <!--  Chat JS-->
     <script src="../js/chat/jquery.chat.js"></script>
 	<!-- icheck JS -->
-	<script src="js/icheck/icheck.min.js"></script>
-	<script src="js/icheck/icheck-active.js"></script>
+	<script src="../js/icheck/icheck.min.js"></script>
+	<script src="../js/icheck/icheck-active.js"></script>
     <!--  todo JS -->
     <script src="../js/todo/jquery.todo.js"></script>
     <!--  wave JS -->
     <script src="../js/wave/waves.min.js"></script>
     <script src="../js/wave/wave-active.js"></script>
 	<!-- Login JS -->
-	<script src="js/login/login-action.js"></script>
+	<script src="../js/login/login-action.js"></script>
     <!-- plugins JS -->
     <script src="../js/plugins.js"></script>
     <!-- main JS -->
     <script src="../js/main.js"></script>
     <!-- tawk chat JS -->
     <!-- <script src="js/tawk-chat.js"></script> -->
+	<!-- Data Maps JS -->
+    <script src="../js/data-map/d3.min.js"></script>
+    <script src="../js/data-map/topojson.js"></script>
+    <script src="../js/data-map/datamaps.all.min.js"></script>
+    <script src="../js/data-map/data-maps-active.js"></script>
+	<!-- DataTable JS -->
+    <script src="../js/data-table/jquery.dataTables.min.js"></script>
+    <script src="../js/data-table/data-table-act.js"></script>
+	<!-- Datepicker JS -->
+	<script src="../js/datapicker/bootstrap-datepicker.js" type="text/javascript"></script>
+	<script src="../js/datapicker/datepicker-active.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -1,3 +1,3 @@
 <?php      
-  header('Location: <ital>controller/accueil.php</ital>');      
+  header('Location: controller/accueil.php');      
 ?>
