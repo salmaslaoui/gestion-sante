@@ -90,6 +90,8 @@
 	<!-- Datepicker JS -->
 	<script src="../js/datapicker/bootstrap-datepicker.js" type="text/javascript"></script>
 	<script src="../js/datapicker/datepicker-active.js" type="text/javascript"></script>
+	<!-- jQuery UI-->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 
 </html>

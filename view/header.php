@@ -72,6 +72,8 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])){
 	<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
 	<!-- Datepicker JS -->
 	<link rel="stylesheet" href="../css/datapicker/datepicker3.css">
+	<!--jQuery UI-->
+	<link rel="stylesheet" href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css">
 </head>
 
 <body>
@@ -186,7 +188,7 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])){
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="../script/logout.php">
+									<a href="../script/reglog/logout.php">
 										<span><i class="fas fa-user-slash"></i></span><span>     Se déconnecter</span>
 									</a>
 								</li>';

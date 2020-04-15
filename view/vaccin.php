@@ -90,6 +90,6 @@ $(document).ready(function(){
 	});
 });
 $('#vaccdate').datepicker({
-	format: 'dd/mm/yyyy'
+	dateFormat: 'dd/mm/yy'
 });
 </script>

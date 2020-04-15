@@ -1,7 +1,17 @@
-<?php 
+<?php
+session_start();
+
+require_once '../../model/treatments.class.php';
+
+$database = new PDO('mysql:host=localhost;dbname=md2;charset=utf8', 'root', '');
+
 if(isset($_POST['taid'])){
-	$id = (int) $_POST['ttag'];
-	$id -= 1; // NE PAS OUBLIEZ D'ENLEVER 1 A CAUSE DE LA BOUCLE FOR DE JS !!
-	echo "KOUKOU ON A BIEN LES INFOS DANS DEL TREAT : taid = ", $_POST['taid'], "et le tag :",$_POST['ttag'];
+	$bddtreat = new ManagementBddTreatments($database);
+	
+	$t_id = $_POST['taid'];
+	$t_tag = $_POST['ttag'];
+	$bddtreat->update_del_treat($t_id,$t_tag);
+	
+	echo "Votre traitement a bien été supprimé.";
 }
 ?>

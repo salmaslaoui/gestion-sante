@@ -12,7 +12,7 @@ if(isset($_POST['prise'])){
 	// Faire un preg split de tid et récup un ou plusieurs id --> array
 	// Foreach array id récupéré :
 		// Faire les méthodes de décrémenter t_validate dans la bdd
-		// Décrémenter dans Pharmacie / Storage
+		// Décrémenter dans Storage
 		// Retourner une erreur ou pas
 		// Modifier le $GLOBAL des validate ?? 
 	

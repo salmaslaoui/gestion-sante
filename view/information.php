@@ -157,6 +157,6 @@ require_once 'footer.php';
 
 <script>
 $('#ifdatea').datepicker({
-	format: 'dd/mm/yyyy'
+	dateFormat: 'dd/mm/yy'
 });
 </script>

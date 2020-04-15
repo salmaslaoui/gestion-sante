@@ -169,13 +169,25 @@ class ManagementBddTreatments extends crud {
         $query->execute();
 	}
 	
-	public function update_treat_take($tid,$prise){
+	public function update_treat_take($t_id,$prise){
 		$query = $this->getDb()->prepare('UPDATE treatments
-			SET t_validate = :validate,
+			SET t_validate = :t_validate,
 			WHERE t_id = :t_id');
 		
 		$query->bindValue(':t_id',$t_id, PDO::PARAM_INT);
 		$query->bindValue(':t_validate',$prise, PDO::PARAM_INT);
+		
+		$query->execute();
+	}
+	
+	public function update_del_treat($t_id,$t_tag){
+		$query = $this->getDb()->prepare('UPDATE treatments
+			SET t_del = 1
+			WHERE t_tag = :t_tag
+				AND t_aid = :t_id');
+		
+		$query->bindValue(':t_id',$t_id, PDO::PARAM_INT);
+		$query->bindValue(':t_tag',$t_tag, PDO::PARAM_STR);
 		
 		$query->execute();
 	}
@@ -201,12 +213,33 @@ class ManagementBddTreatments extends crud {
         }
     }
 	
+	public function select_tag_for_1ppl($id){
+        $resultat =[];
+        
+        $query = $this->getDb()->prepare('SELECT t_tag FROM treatments
+            WHERE t_aid = :t_aid 
+				AND t_del = 0 
+				AND t_validate > 0
+			GROUP BY t_tag');
+        
+        $query->BindValue(':t_aid', $id, PDO::PARAM_INT);
+        
+        $query->execute();
+        
+        if($query == false){
+            return false;
+        } else {
+            $resultat = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $resultat;
+        }
+    }
+	
 	public function select_treatment_for_1ppl_with_tag($id, $tag){
         $resultat =[];
         
         $query = $this->getDb()->prepare('SELECT * FROM treatments
-			LEFT JOIN cis_bdpm ON treatments.t_cip = cis_bdpm.cis_cis
-            WHERE t_aid = :t_aid AND t_tag = :t_tag');
+            WHERE t_aid = :t_aid
+				AND t_tag = :t_tag');
         
         $query->BindValue(':t_aid', $id, PDO::PARAM_INT);
 		$query->BindValue(':t_tag', $tag, PDO::PARAM_STR);

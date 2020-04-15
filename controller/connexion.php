@@ -35,7 +35,7 @@ document.getElementById('lsub').onclick = function(){
 	
 	if(user){
 		if(pass){
-			$.post("../script/login.php", { luser : user, lpass : pass },
+			$.post("../script/reglog/login.php", { luser : user, lpass : pass },
 				function(success){
 					test = success;
 					alert(success);
@@ -80,7 +80,7 @@ document.getElementById('rsub').onclick = function(){
 											if(name){
 												if(date){
 													if(validateDate(date)){
-														$.post("../script/register.php", { ruser : user, rmail : mail, rpass : pass, rpass2 : pass2, rpre : pre, rname : name, rdate : date},
+														$.post("../script/reglog/register.php", { ruser : user, rmail : mail, rpass : pass, rpass2 : pass2, rpre : pre, rname : name, rdate : date},
 															function(success){
 																test = success;
 																alert(success);
@@ -151,7 +151,7 @@ document.getElementById('psub').onclick = function(){
 	
 	if(mail){
 		if(validateEmail(mail)){
-			$.post("../script/forgetpass.php", { pmail : mail},
+			$.post("../script/reglog/forgetpass.php", { pmail : mail},
 				function(success){
 					alert("Un mail avec un mot de passe temporaire vous a été envoyé.");
 					document.location.href = "connexion.php";

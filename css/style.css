@@ -48,6 +48,10 @@
     34. Data Table 
     35. Form Element
     36. Form Components
+.
+.
+.
+    60. AutoComplete
 
 -----------------------------------------------------------------------------------*/
 
@@ -4642,3 +4646,13 @@ body.box-layout {
 /*----------------------------------------*/
 .mCS-light-1.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ background-color: #00c292; }
 .mCS-light-1.mCSB_scrollTools .mCSB_draggerRail{ background-color: #ccc; }
+/*----------------------------------------*/
+/*  60. AutoComplete
+/*----------------------------------------*/
+.ui-autocomplete .ui-front{
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-right: 20px !important;
+    z-index:1000 !important;
+}

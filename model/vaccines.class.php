@@ -7,6 +7,7 @@ class Vaccines {
 	private $_v_name;
 	private $_v_disease;
 	private $_v_type;
+	private $_v_age;
 	private $_v_date;
 
 	
@@ -46,6 +47,15 @@ class Vaccines {
         return $this->_v_type; 
 	}
 	
+	public function setv_age($value) {
+        if((is_string($value) == true) and (strlen($value) <= 5)){
+			$this->_v_age = $value;
+        }
+	}
+	public function getv_age() { 
+        return $this->_v_age; 
+	}
+	
 	public function setv_date($value) {
         if((is_string($value) == true) and (strlen($value) <= 255)){
 			$this->_v_date = $value;
@@ -70,12 +80,13 @@ class ManagementBddVaccines extends crud {
 
     // CREATE
     public function add_vaccin(Vaccines $vaccin){
-        $query = $this->getDb()->prepare('INSERT INTO vaccines (v_name, v_disease, v_type, v_date) 
-            VALUES (:v_name, :v_disease, :v_type, :v_date)');
+        $query = $this->getDb()->prepare('INSERT INTO vaccines (v_name, v_disease, v_type, v_age, v_date) 
+            VALUES (:v_name, :v_disease, :v_type, :v_age, :v_date)');
 			
         $query->bindValue(':v_name', $vaccin->getv_name(), PDO::PARAM_STR);
 		$query->bindValue(':v_disease', $vaccin->getv_disease(), PDO::PARAM_STR);			
         $query->bindValue(':v_type', $vaccin->getv_type(), PDO::PARAM_STR);
+        $query->bindValue(':v_age', $vaccin->getv_age(), PDO::PARAM_STR);
 		$query->bindValue(':v_date', $vaccin->getv_date(), PDO::PARAM_STR);
         
         $query->execute();
@@ -85,13 +96,14 @@ class ManagementBddVaccines extends crud {
 	// UPDATE
     public function update_vaccin(Vaccines $vaccin){
         $query = $this->getDb()->prepare('UPDATE vaccines 
-            SET v_name = :v_name, v_disease = :v_disease, v_type = :v_type, v_date = :v_date
+            SET v_name = :v_name, v_disease = :v_disease, v_type = :v_type, v_age = :v_age, v_date = :v_date
             WHERE v_id = :v_id');
         
 		$query->bindValue(':v_id', $vaccin->getv_id(), PDO::PARAM_INT);
 		$query->bindValue(':v_name', $vaccin->getv_name(), PDO::PARAM_STR);
 		$query->bindValue(':v_disease', $vaccin->getv_disease(), PDO::PARAM_STR);			
         $query->bindValue(':v_type', $vaccin->getv_type(), PDO::PARAM_STR);
+		$query->bindValue(':v_date', $vaccin->getv_age(), PDO::PARAM_STR);
 		$query->bindValue(':v_date', $vaccin->getv_date(), PDO::PARAM_STR);
 
         $query->execute();
@@ -120,7 +132,7 @@ class ManagementBddVaccines extends crud {
 	public function select_id_vaccin_with_vac_name($name){
 		$resultat =[];
     
-		$query = $this->getDb()->prepare('SELECT v_id FROM vaccines
+		$query = $this->getDb()->prepare('SELECT v_id, v_age FROM vaccines
 			WHERE v_name = :v_name');
     
 		$query->BindValue(':v_name', $name, PDO::PARAM_STR);

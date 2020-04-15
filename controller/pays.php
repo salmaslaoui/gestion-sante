@@ -32,7 +32,7 @@ if(isset($_POST['buttonsearch'])){
 						$ret3 = $tableVaccins->select_all_with_id($table,$id_row2);
 						$resultatpaystest .= "Liste des vaccins pour le pays ".$ret1['c_name_fr']." :</br>";
 						foreach($ret3 AS $row3){
-							$resultatpaystest .= $row3['v_name'] . " " . $row3['v_disease']. " " . $row3['v_type']. " " . $row3['v_date']."</br>";
+							$resultatpaystest .= $row3['v_name'] . " " . $row3['v_disease']. " " . $row3['v_type']. "</br> Date des Rappels : à partir de" . $row3['v_age'] . " : " . $row3['v_date']."</br>";
 						}
 					}
 					else {
@@ -51,6 +51,15 @@ if(isset($_POST['buttonsearch'])){
 }
 require_once '../view/pays.php';
 ?>
+<script>
+	$('#inputsearch').autocomplete({
+		source : '../script/autocomplete/listePays.php',
+		minLength: 3,
+		select : function(event, ui){
+			$('#description').val( ui.item.desc ); 
+		}
+    });
+</script>
 
 
 

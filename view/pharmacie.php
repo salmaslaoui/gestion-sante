@@ -146,6 +146,6 @@ $(document).ready(function(){
 	});
 });
 $('#phaexp').datepicker({
-	format: 'dd/mm/yyyy'
+	dateFormat: 'dd/mm/yy'
 });
 </script>

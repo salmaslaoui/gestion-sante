@@ -11,6 +11,13 @@ $titre_page = "Informations personnelles de l'utilisateur ".$_SESSION['u_name'];
 $ariane = "<a href='accueil.php'>Accueil</a> > Informations personnelles";
 
 if(isset($_SESSION['u_id'])){
+	if(isset($_GET['action']) AND !is_null($_GET['action'])){
+		$action = 1;
+	}
+	else {
+		$action = 0;
+	}
+	
 	$recupInfoUsers = new ManagementBddUsers($database);
 	$recupInfoAccounts = new ManagementBddAccounts($database);
 	$table = "users";
@@ -100,6 +107,13 @@ require_once '../view/information.php';
 
 <script>
 $(document).ready(function() {
+	var action = <?php echo $action; ?>;
+
+	if(action == 1){
+		document.getElementById('home').className = "tab-pane";
+		document.getElementById('addp').className = "tab-pane active";
+	}
+	
 	var json = JSON.parse('<?= $jsondata ; ?>');
 	document.getElementById('ifnomc').value = json.u_name;
 	document.getElementById('ifpassc').value = json.u_password;
@@ -158,7 +172,7 @@ $(document).ready(function() {
 			$.post("../script/persoinfo/suppression.php", { idu : iduser },
 				function(success){
 					alert(success);
-								document.location.href = "accueil.php";
+					document.location.href = "accueil.php";
 				}
 			);
 		}
@@ -199,32 +213,6 @@ $(document).ready(function() {
 	
 		var function_del_personne = 'document.getElementById("ifsuppp'+i+'").onclick = function(){if(confirm("Voulez-vous vraiment supprimer cet utilisateur ?")){var idaccount = json2['+i+'].a_id;$.post("../script/persoinfo/suppressionpers.php", { ida : idaccount },function(success){alert(success);document.location.href = "information.php";});}}';
 		eval(function_del_personne);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 });
 </script>

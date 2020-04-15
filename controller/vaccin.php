@@ -49,9 +49,18 @@ require_once '../view/vaccin.php';
 ?>
 
 <script>
+    $('#vaccnom').autocomplete({
+		source : '../script/autocomplete/listeVacc.php',
+		minLength : 3,
+		select : function(event, ui){
+			$('#description').val( ui.item.desc ); 
+		}
+    });
+	
     document.getElementById('vaccsub').onclick = function(){
 		var resNomV = document.getElementById('vaccnom').value;
 		var resDateV = document.getElementById('vaccdate').value;
+		console.log(resDateV);
 
 		if(resNomV){
 			if(resDateV){
@@ -84,7 +93,7 @@ require_once '../view/vaccin.php';
 		eval(function_modif_vaccin);
 
 		$('#modifdate'+i+'').datepicker({
-			format: 'dd/mm/yyyy'
+			dateFormat: 'dd/mm/yy'
 		});
 	}
 </script>

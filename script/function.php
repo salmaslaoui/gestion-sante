@@ -29,7 +29,7 @@ function calculNbPrise($date1,$date2,$prise){
 	$ret = $date1->diff($date2);
 	$ret2 = $ret->format('%R%a');
 	$ret3 = substr($ret2,1);
-	$ret4 = $ret3 * $prise;
+	$ret4 = ($ret3 * $prise) + $prise;
 	return $ret4;
 }
 

@@ -29,6 +29,8 @@ if(isset($_POST['idu'])){
 	$recupUserASuppr->delete_user_with_user_id($idu);
 
 	echo "Toutes les informations vous concernant et vos personnes affiliées sont bien supprimées !";
+	$_SESSION = array();
+	session_destroy();
 }
 else {
 	echo "Une erreur est survenue.";

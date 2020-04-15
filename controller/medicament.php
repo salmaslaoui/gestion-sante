@@ -47,56 +47,62 @@ if(isset($_POST['buttonsearch'])){
 			}
 			$retInfosImp = $recupMedicInfosImp->select_cis_infoImportantes_aaaammjjhhmiss_by_idcis($id_row);
 						
-			$resultatmedtest .= $row['cis_cis'] . " " . $row['cis_name']. " " . $row['cis_type']
-			. " " . $row['cis_take'] ." " . $row['cis_status']." " . $row['cis_proc']
-			. " " . $row['cis_comm']. " " . $row['cis_date_amm']. " " . $row['cis_status_bdm']
-			. " " . $row['cis_ue_number']. " " . $row['cis_lab']. " " . $row['cis_watch'];
+			$resultatmedtest .= "<br/><h4>" . $row['cis_name']. "</h4><b>Type de médicament</b> : " . $row['cis_type']
+			. "<br/><b>Voie d'administration</b> : " . $row['cis_take'] ."<br/><b>Informations de commercialisation</b> : " . $row['cis_status']." - " . $row['cis_proc']
+			. " - " . $row['cis_comm']. " en " . $row['cis_date_amm']. " - " . $row['cis_status_bdm']
+			. " - N° Européen : " . $row['cis_ue_number']. "<br/><b>Laboratoire</b> : " . $row['cis_lab']."<br/>";
 
 			foreach($retCip AS $rowCip){
-				$resultatmedtest .= $rowCip['cis_cip_cip7'] . " " . $rowCip['cis_cip_name']. " " . $rowCip['cis_cip_admin']
-				. " " . $rowCip['cis_cip_comm'] ." " . $rowCip['cis_cip_date']." " . $rowCip['cis_cip_cip13']
-				. " " . $rowCip['cis_cip_community']. " " . $rowCip['cis_cip_refund']. " " . $rowCip['cis_cip_price']
-				. " " . $rowCip['cis_cip_price2']. " " . $rowCip['cis_cip_price3']. " " . $rowCip['cis_cip_law'];
+				$resultatmedtest .= "<b>Composition d'une boîte</b> : " . $rowCip['cis_cip_name']. " <br/>" . $rowCip['cis_cip_admin']
+				. "<br/><b>Prise en charge possible par la Sécurité sociale</b> : " . $rowCip['cis_cip_refund']. "<br/>Prix disponibles : " . $rowCip['cis_cip_price']
+				. " - " . $rowCip['cis_cip_price2']. " - " . $rowCip['cis_cip_price3']. "<br/>" . $rowCip['cis_cip_law'];
 			}
 			foreach($retCompo AS $rowCompo){
-				$resultatmedtest .= $rowCompo['cis_comp_type'] . " " . $rowCompo['cis_comp_code']. " " . $rowCompo['cis_comp_sub']
-				. " " . $rowCompo['cis_comp_dosage']. " " . $rowCompo['cis_comp_ref']
-				. " " . $rowCompo['cis_comp_nature']. " " . $rowCompo['cis_comp_link_number']
-				. " " . $rowCompo['cis_comp_col9'];
+				$resultatmedtest .= "<br/><b>Composition :<br/>Code composition</b> : " . $rowCompo['cis_comp_code']. "<br/><b>Substance active</b> : " . $rowCompo['cis_comp_sub']
+				. " dosé à " . $rowCompo['cis_comp_dosage']. " par " . $rowCompo['cis_comp_ref']
+				. ". Nature de la substance : " . $rowCompo['cis_comp_nature']. ".</br>";
 			}
 			foreach($retGener AS $rowGener){
-				$resultatmedtest .= $rowGener['cis_gen_name'] . " " . $rowGener['cis_gen_cis']. " " . $rowGener['cis_gen_type']
-				. " " . $rowGener['cis_gen_sort']. " " . $rowGener['cis_gen_col6'];
+				$resultatmedtest .= "<br/><b>Générique</b> : <br/>Nom : ".$rowGener['cis_gen_name'] . "<br/> Code : " . $rowGener['cis_gen_cis']. "<br/> Type du générique : " . $rowGener['cis_gen_type'];
 			}
 			foreach($retCpd AS $rowCpd){
-				$resultatmedtest .= $rowCpd['cis_cpd_cond'];
+				$resultatmedtest .= "<b>Conditions d'usage</b> : ".$rowCpd['cis_cpd_cond'];
 			}
 			foreach($retAsmr AS $rowHasAsmr){
-				$resultatmedtest .= $rowHasAsmr['cis_ha_file'] . " " . $rowHasAsmr['cis_ha_motive']
-				. " " . $rowHasAsmr['cis_ha_date']
-				. " " . $rowHasAsmr['cis_ha_value']. " " . $rowHasAsmr['cis_ha_desc'];
+				$resultatmedtest .= "<br/><br/><b>Informations Haute Autorité de santé</b> :<br/>N° de dossier HAS : ".$rowHasAsmr['cis_ha_file'] . "<br/>Motivations : " . $rowHasAsmr['cis_ha_motive']
+				. "<br/>Date : " . $rowHasAsmr['cis_ha_date']
+				. "<br/>Importance : " . $rowHasAsmr['cis_ha_value']. "<br/>Contenu :<br/> " . $rowHasAsmr['cis_ha_desc'];
 			}
 			foreach($retSmr AS $rowHasSmr){
-				$resultatmedtest .= $rowHasSmr['cis_hs_file'] . " " . $rowHasSmr['cis_hs_motive']
-				. " " . $rowHasSmr['cis_hs_date']
-				. " " . $rowHasSmr['cis_hs_value']. " " . $rowHasSmr['cis_hs_desc'];
+				$resultatmedtest .= "<br/><br/><b>Informations Haute Autorité de santé</b> - Service Médical Rendu :<br/>N° de dossier : ".$rowHasSmr['cis_hs_file'] . "<br/>Motivations : " . $rowHasSmr['cis_hs_motive']
+				. "<br/>Date : " . $rowHasSmr['cis_hs_date']
+				. "<br/>Importance : " . $rowHasSmr['cis_hs_value']. "<br/>Contenu :<br/>" . $rowHasSmr['cis_hs_desc'];
 			}
 			foreach($retInfosImp AS $rowInfosImp){
-				$resultatmedtest .= $rowInfosImp['cis_ii_start_date'] . " " . $rowInfosImp['cis_ii_end_date']
-				. " " . $rowInfosImp['cis_ii_desc'];
+				$resultatmedtest .= "<br/><br/><b>Informations importantes</b> :<br/> Du ".$rowInfosImp['cis_ii_start_date'] . " au " . $rowInfosImp['cis_ii_end_date']
+				. " : " . $rowInfosImp['cis_ii_desc'];
 			}
 			if(!empty($retHasLiens)){
 				foreach($retHasLiens AS $rowLiens){
-					$resultatmedtest .= $rowLiens['has_link'];
+					$resultatmedtest .= "<br/><b>Liens</b> : ".$rowLiens['has_link'];
 				}
 			}
+			$resultatmedtest .= "<hr>";
 		}
 	}
+	else {
+		$error = "Veuillez saisir au moins 3 caractères";
+	}
 }
-else {
-	$error = "Veuillez saisir au moins 3 caractères";
-}
-
 
 require_once '../view/medicament.php';
 ?>
+<script>
+	$('#inputsearch').autocomplete({
+		source : '../script/autocomplete/listeMedic.php',
+		minLength : 3,
+		select : function(event, ui){
+			$('#description').val( ui.item.desc ); 
+		}
+    });
+</script>

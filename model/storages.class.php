@@ -153,6 +153,26 @@ class ManagementBddStorages extends crud {
         }
     }
 	
+	public function check_drugs_treatment($id,$cis){
+        $resultat =[];
+        
+        $query = $this->getDb()->prepare('SELECT s_quantity FROM storages
+            WHERE s_uid = :s_uid
+				AND s_cis = :s_cis');
+        
+        $query->BindValue(':s_uid', $id, PDO::PARAM_INT);
+		$query->BindValue(':s_cis', $cis, PDO::PARAM_INT);
+        
+        $query->execute();
+        
+        if($query == false){
+            return false;
+        } else {
+            $resultat = $query->fetch(PDO::FETCH_ASSOC);
+            return $resultat;
+        }
+    }
+	
 	
 	//DELETE
     public function delete_storage_with_uid($id){

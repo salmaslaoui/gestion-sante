@@ -118,6 +118,23 @@ class ManagementBddCisBdpm extends crud{
 			return $resultat;
 		}
 	}
+	
+	public function select_name_by_idcis($id){
+		$resultat = [];
+
+		$query = $this->getDb()->prepare('SELECT cis_name FROM cis_bdpm
+			WHERE cis_cis = '.$id.'');
+
+		$query->execute();
+
+		if ($query == false) {
+			return false;
+		} 
+		else {
+			$resultat = $query->fetchALL(PDO::FETCH_ASSOC);
+			return $resultat;
+		}
+	}
 
 	public function select_cis_by_cisname($name){
 		$resultat = [];

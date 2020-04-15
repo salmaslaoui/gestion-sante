@@ -107,6 +107,14 @@ require_once '../view/pharmacie.php';
 
 <script>
 $(document).ready(function() {
+	$('#phanom').autocomplete({
+		source : '../script/autocomplete/listeMedic.php',
+		minLength : 3,
+		select : function(event, ui){
+			$('#description').val( ui.item.desc ); 
+		}
+    });
+	
     document.getElementById('phasub').onclick = function(){
 		var resNomP = document.getElementById('phanom').value;
 		var resDosP = document.getElementById('phados').value;
@@ -156,7 +164,7 @@ $(document).ready(function() {
 
 	for(i = 0 ; i < <?php echo $j;?> ; i++){
 		$('#phamodexp'+i+'').datepicker({
-			format: 'dd/mm/yyyy'
+			dateFormat: 'dd/mm/yy'
 		});
 		
 		function_toggle_modif = '$("#pharmamodif'+i+'").click(function(){$("#divphamod'+i+'").toggle();});';

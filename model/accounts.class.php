@@ -153,6 +153,23 @@ class ManagementBddAccounts extends crud {
         }
 	}
 	
+	   public function get_birth_day($id){
+        $resultat =[];
+        
+        $query = $this->getDb()->prepare('SELECT a_birth_date FROM accounts
+            WHERE a_uid = :a_uid');
+        
+        $query->BindValue(':a_uid', $id, PDO::PARAM_INT);
+        
+        $query->execute();
+        
+        if($query == false){
+            return false;
+        } else {
+            $resultat = $query->fetch(PDO::FETCH_ASSOC);
+            return $resultat;
+        }
+    }
 	
 	//DELETE
 	public function delete_account_with_user_id($id){
